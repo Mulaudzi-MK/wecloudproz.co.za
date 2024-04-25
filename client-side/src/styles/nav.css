@@ -1,0 +1,122 @@
+.high_order_nav_container{
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 10vh;
+background: transparent;
+z-index: 0;
+
+
+}
+
+.high_order_nav_container > .icon_container{
+    display: none;
+    cursor: pointer;
+}
+
+.nav_container{
+    top: -5;
+    backdrop-filter: blur(4px);
+    width: 60%;
+    margin-left: 39%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    border-radius: 40px;
+    z-index: 1000;
+}
+
+.nav_container > li{
+    display: flex;
+    padding: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.nav_container > li > ul {
+    margin-right: 20%;
+}
+
+.nav_container > li > ul a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+@media screen and (max-width: 857px){
+    .nav_container{
+     margin-left: 35%;
+    }
+ 
+}
+
+@media screen and (max-width: 600px){
+    .nav_container{
+     display: none;
+    }
+   .high_order_nav_container > .icon_container{
+        display: flex;
+        margin-left: 80%;
+        width: 35px;
+        height: 30px;
+        position: relative;
+    }
+}
+
+.overlay{
+    background: transparent;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+.overlayTwo{
+    background-color: transparent;
+}
+
+.sidenav{
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 40%;
+    height: 60vh;
+    display: grid;
+    margin-left: 60%;
+    position: relative;
+    z-index: 1000;
+}
+.sidenav > li > ul > a{
+    color: rgba(255, 255, 255, 0.909);
+    font-weight:700;
+    border-bottom: 1px solid rgb(66, 152, 202);
+    
+}
+
+.sidenavTwo{
+    background-color: rgba(237, 230, 230, 0.295);
+    width: 30%;
+    height: 0vh;
+    display: grid;
+    bottom: 460%;
+    position: relative;
+}
+
+.sidenav > li{
+    padding: 10px;
+
+}
+
+.sidenav > li ul{
+    margin-top: 40px;
+
+}
+
+.sidenav > li > ul > a{
+    text-decoration: none;
+}
+
+.icon_container > .hurmburger{
+    color: white;
+}
