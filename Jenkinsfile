@@ -2,18 +2,13 @@ pipeline {
     agent any
 
     tools {
-        nodejs "Node18" // Make sure this matches the NodeJS tool name in Jenkins
-    }
-
-    environment {
-        // Set NODE_ENV for production build
-        NODE_ENV = 'production'
+        nodejs "Node18" // Make sure Node 18 is configured in Jenkins tools
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                echo "Checking out code..."
+                echo 'Checking out code...'
                 git branch: 'main', url: 'https://github.com/Mulaudzi-MK/wecloudproz.co.za.git'
             }
         }
@@ -21,7 +16,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing NPM dependencies...'
-                // Change 'client' if your React app is in a different subfolder
                 dir('client') {
                     sh 'npm install'
                 }
@@ -32,7 +26,8 @@ pipeline {
             steps {
                 echo 'Building React app...'
                 dir('client') {
-                    sh 'npm run build'
+                    // Use npx to run the local Vite build
+                    sh 'npx vite build'
                 }
             }
         }
@@ -41,18 +36,18 @@ pipeline {
             steps {
                 echo 'Archiving build artifacts...'
                 dir('client') {
-                    archiveArtifacts artifacts: 'build/**', fingerprint: true
+                    archiveArtifacts artifacts: 'dist/**', fingerprint: true
                 }
             }
         }
     }
 
     post {
-        success {
-            echo '✅ Build succeeded!'
-        }
         failure {
             echo '❌ Build failed. Check console output for errors.'
+        }
+        success {
+            echo '✅ Build succeeded!'
         }
     }
 }
